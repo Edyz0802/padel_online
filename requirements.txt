@@ -1,2 +1,3 @@
-Flask
-trueskill
+Flask==2.3.2
+trueskill==0.4.6
+gunicorn==20.1.0
