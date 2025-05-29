@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8" />
+    <title>Classifica Padel TrueSkill</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        table { border-collapse: collapse; width: 90%; margin: auto; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: center; }
+        th { background-color: #4CAF50; color: white; }
+        tr:nth-child(even) { background-color: #f2f2f2; }
+        caption { font-size: 1.5em; margin-bottom: 20px; }
+        small { font-style: italic; color: #555; }
+    </style>
+</head>
+<body>
+    <h1 style="text-align:center;">Classifica Padel (TrueSkill)</h1>
+    <table>
+        <caption>Posizione, nome giocatore e statistiche</caption>
+        <thead>
+            <tr>
+                <th>Posizione</th>
+                <th>Giocatore</th>
+                <th>Punteggio (μ - 3σ)</th>
+                <th>μ</th>
+                <th>σ</th>
+                <th>Partite giocate</th>
+                <th>Vittorie</th>
+                <th>Sconfitte</th>
+                <th>Pareggi</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i, player in enumerate(classifica, 1) %}
+            <tr>
+                <td>{{ i }}</td>
+                <td>{{ player.nome }}</td>
+                <td>{{ player.punteggio }}</td>
+                <td>{{ player.mu }}</td>
+                <td>{{ player.sigma }}</td>
+                <td>{{ player.giocate }}</td>
+                <td>{{ player.vittorie }}</td>
+                <td>{{ player.sconfitte }}</td>
+                <td>{{ player.pareggi }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <p style="text-align:center; margin-top: 20px;">
+        <small>Punteggio = μ - 3 * σ (valore conservativo TrueSkill)</small>
+    </p>
+</body>
+</html>
